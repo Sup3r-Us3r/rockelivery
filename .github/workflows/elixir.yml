@@ -13,11 +13,10 @@ jobs:
   build:
     name: Build and test
     runs-on: ubuntu-latest
-    
+
     services:
-      db:
-        image: postgres11
-        ports: ['5432:5432']
+      postgres:
+        image: postgres
         env:
           POSTGRES_PASSWORD: postgres
         options: >-
