@@ -47,6 +47,16 @@ jobs:
     - name: Run credo
       run: mix credo --strict
 
+    - name: Check coverage
+      run: mix coveralls.json
+      env:
+        MIX_ENV: test
+
+    - name: Run codecov script
+      run: curl -Os https://uploader.codecov.io/latest/linux/codecov && chmod +x codecov && ./codecov
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
     - name: Install dependencies
       run: mix deps.get
 
